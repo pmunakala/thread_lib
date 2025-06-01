@@ -19,7 +19,6 @@ Manage run queues and wait queues  Explore core OS scheduling concepts
 - Run and wait queues to manage thread states
 
 ---
-
 ## How It Works
 
 - Threads are implemented with their own stack and `ucontext_t`.
@@ -27,12 +26,12 @@ Manage run queues and wait queues  Explore core OS scheduling concepts
 - Threads yield voluntarily using sleep or exit.
 - No preemption or OS-managed scheduling — **you control everything**.
 
----
-
  ## Build
+To compile the library and demo app, run -- make 
 
-```bash
-make 
+libmythread.so is built from:  Queue.c , thread.c
+
+DemoApp is built from:  main.c and Linked with -lmythread (which points to libmythread.so in the current directory)
 
 ## Run
 echo LD_LIBRARY_PATH=./ 
