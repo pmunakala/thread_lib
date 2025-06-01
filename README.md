@@ -29,7 +29,11 @@ Manage run queues and wait queues  Explore core OS scheduling concepts
 
 ---
 
-## Build
+ ## Build
 
 ```bash
-gcc -o mythreads main.c thread.c queue.c -Wall
+make 
+
+## Run
+echo LD_LIBRARY_PATH=./ 
+./DemoApp

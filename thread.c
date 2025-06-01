@@ -115,10 +115,7 @@ void mythread_exit (mythread_id_t idx)
 
 void thread_wrapper (void *arg)
 {
-    static int count = 1000;
     mythread_t *thd = arg;
-    count++;
-    printf("I am in %s count %d\n",__func__, count);
     thd->thread_func();
     mythread_exit(thd->id);
 }

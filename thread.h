@@ -26,6 +26,7 @@
 #define __MYTHREAD_LIB__
 
 #include<ucontext.h>
+#include<stdbool.h>
 #include "Queue.h"
 
 typedef int mythread_id_t;
@@ -44,7 +45,7 @@ typedef struct mythread_s {
     void (*thread_func)();
 } mythread_t;
 
-static is_mythread_sleeping (mythread_t *t1)
+static bool is_mythread_sleeping (mythread_t *t1)
 {
     return (t1->state == THREAD_SLEEP);
 }
@@ -80,6 +81,6 @@ void mythread_exit(mythread_id_t idx);
 mythread_id_t mythread_create(mythread_t *thread1, void (*func)());
 void mythread_wakeup(mythread_id_t idx);
 void mythread_sleep(mythread_id_t idx);
-void scheduler_run(void);
+extern void scheduler_run(void);
 void init_mythread_lib() __attribute__((constructor));
 #endif
