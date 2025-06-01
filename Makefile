@@ -23,30 +23,39 @@
 #/
 
 
-OBJS += Queue.o thread.o
+
+#Compiler and flags 
+CC     :=  gcc 
+CFLAGS := -g -fpic
+
+# Targets :
 
 SHARED_LIB := mythread.so
-
 DEMO_APP := DemoApp
 
-CFLAGS = -g -fpic
-CC    =  gcc 
+# Source and objects 
 
+OBJS     := Queue.o thread.o
+APP_OBJS := main.o
+
+# Default target
 all: $(SHARED_LIB) $(DEMO_APP)
 
-.c.o:
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-    
+# Builing shared lib
 $(SHARED_LIB): $(OBJS)
 	$(CC) -shared $(OBJS) -o libmythread.so 
 
-APP_OBJS += main.o
+
+# Building Demo Application
 
 $(DEMO_APP): $(SHARED_LIB) $(APP_OBJS)
 	$(CC) -o $(DEMO_APP) $(APP_OBJS) -L./ -lmythread
 
-.PHONY: $(SHARED_LIB) $(DEMO_APP)
+.PHONY: all clean 
 	 
+# clean up
 clean:
 	rm *.o *.so $(DEMO_APP)
