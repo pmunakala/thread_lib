@@ -34,5 +34,5 @@ libmythread.so is built from:  Queue.c , thread.c
 DemoApp is built from:  main.c and Linked with -lmythread (which points to libmythread.so in the current directory)
 
 ## Run
-echo LD_LIBRARY_PATH=./ 
+export LD_LIBRARY_PATH=./ 
 ./DemoApp
